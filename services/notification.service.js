@@ -1,6 +1,5 @@
-import admin from 'firebase-admin';
-// TODO: uncomment this line and create FirebaseJson
-const serviceAccount = require('../config/firebase.json');
+// import admin from 'firebase-admin';
+// const serviceAccount = require('../config/firebase.json');
 
 const notificationOptions = {
   priority: 'high',
@@ -8,11 +7,12 @@ const notificationOptions = {
 /**
  * intializing the firebase messaging service (push notification)
  */
-const messaging = admin
-  .initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  })
-  .messaging();
+// const messaging = admin
+//   .initializeApp({
+//     credential: admin.credential.cert(serviceAccount),
+//   })
+//   .messaging();
+const messaging = {};
 /* eslint-disable */
 export const verifyFCMToken = async (fcmToken) => {
   try {
