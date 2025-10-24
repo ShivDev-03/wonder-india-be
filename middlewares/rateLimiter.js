@@ -1,9 +1,9 @@
 import rateLimit from 'express-rate-limit';
-import RedisStore from 'rate-limit-redis';
+// import RedisStore from 'rate-limit-redis';
 import httpStatus from 'http-status';
 import ApiError from 'utils/ApiError';
 // eslint-disable-next-line import/named
-import { redisClient } from '../config/redis';
+// import { redisClient } from '../config/redis';
 
 const globalLimiter = rateLimit({
   keyGenerator: (request) => {
@@ -17,10 +17,10 @@ const globalLimiter = rateLimit({
   handler: (request, response, next) => {
     next(new ApiError(httpStatus.TOO_MANY_REQUESTS, 'Error Limit is Reached'));
   },
-  store: new RedisStore({
-    // @ts-expect-error - Known issue: the `call` function is not present in @types/ioredis
-    sendCommand: (...args) => redisClient.call(...args),
-  }),
+  // store: new RedisStore({
+  //   // @ts-expect-error - Known issue: the `call` function is not present in @types/ioredis
+  //   sendCommand: (...args) => redisClient.call(...args),
+  // }),
 });
 module.exports = {
   globalLimiter,

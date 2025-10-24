@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import config from 'config/config';
 import { logger } from 'config/logger';
 import socketAPI from 'appEvents/socketAPI';
-import redisAdapter from 'socket.io-redis';
+// import redisAdapter from 'socket.io-redis';
 import app from './app';
 
 const { initSockets } = require('appEvents/handler');
@@ -14,9 +14,10 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   server = app.listen(config.port, () => {
     logger.info(`Listening to port ${config.port}`);
   });
+  // eslint-disable-next-line global-require
   require('./migrateMongo')();
   // check whether Socket is enabled or not TODO: implement in the future
-  socketAPI.io.adapter(redisAdapter({ host: config.redis.host, port: config.redis.port }));
+  // socketAPI.io.adapter(redisAdapter({ host: config.redis.host, port: config.redis.port }));
   socketAPI.io.attach(server);
   initSockets();
 });

@@ -1,4 +1,4 @@
-import Redis from 'ioredis';
+// import Redis from 'ioredis';
 import config from './config';
 
 const redisConfig = {
@@ -6,5 +6,6 @@ const redisConfig = {
   host: config.redis.host, // Redis host
   // password: config.redis.password, // Redis password if you want Secure
 };
-const redisClient = new Redis(redisConfig);
-module.exports = { redisClient };
+// const redisClient = new Redis(redisConfig);
+
+module.exports = { redisConfig };
