@@ -1,4 +1,3 @@
-
 import httpStatus from 'http-status';
 import ApiError from 'utils/ApiError';
 import _ from 'lodash';
@@ -21,9 +20,6 @@ export const loginUserWithEmailAndPassword = async (email, password) => {
   const isValid = await bcrypt.compare(password, user.password);
   if (!isValid) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Incorrect email or password');
-  }
-  if (!user.emailVerified) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Please check your email and verify it to continue login in to app');
   }
   return user;
 };

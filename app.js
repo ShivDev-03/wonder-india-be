@@ -32,13 +32,20 @@ if (config.env !== 'test') {
   app.use(successHandler);
   app.use(morganErrorHandler);
 }
-// set security HTTP headers
-app.use(helmet());
-// parse json request body
-app.use(express.json());
+// CORS must run before body parsers so error responses (e.g. 413) still include Access-Control-* headers
+const corsOptions = {
+  origin: config.front.url ? [config.front.url, /^http:\/\/localhost(:\d+)?$/] : true,
+  credentials: true,
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+// set security HTTP headers (cross-origin API: allow cross-origin resource policy for browsers)
+app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
+// parse json request body — default 100kb is too small for base64 images in JSON
+app.use(express.json({ limit: '15mb' }));
 app.use(fileUpload());
 // parse urlencoded request body
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 // sanitize request data
 app.use(xss());
 app.use(mongoSanitize());
@@ -46,9 +53,6 @@ app.use(mongoSanitize());
 app.use(compression());
 // set api response
 app.use(sendResponse);
-// enable cors
-app.use(cors());
-app.options('*', cors());
 app.use(express.static(path.join(__dirname, '../public')));
 // jwt authentication
 app.use(passport.initialize());

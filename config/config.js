@@ -39,6 +39,9 @@ const envVarsSchema = Joi.object()
     GITHUB_CLIENT_SECRET: Joi.string().required().description('Apple TeamId is required'),
     STRIPE_KEY: Joi.string().required().description('Stripe Secret Key required'),
     STRIPE_GATEWAY_ID: Joi.string().required().description('Stripe Gateway Id required'),
+    CLOUDINARY_CLOUD_NAME: Joi.string().required().description('Cloudinary cloud name'),
+    CLOUDINARY_API_KEY: Joi.string().required().description('Cloudinary API key'),
+    CLOUDINARY_API_SECRET: Joi.string().required().description('Cloudinary API secret'),
   })
   .unknown();
 const { value: envVars, error } = envVarsSchema.prefs({ errors: { label: 'key' } }).validate(process.env);
@@ -121,5 +124,10 @@ export default {
   stripe: {
     key: envVars.STRIPE_KEY,
     gatewayId: envVars.STRIPE_GATEWAY_ID,
+  },
+  cloudinary: {
+    cloudName: envVars.CLOUDINARY_CLOUD_NAME,
+    apiKey: envVars.CLOUDINARY_API_KEY,
+    apiSecret: envVars.CLOUDINARY_API_SECRET,
   },
 };

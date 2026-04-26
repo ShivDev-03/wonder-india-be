@@ -1,4 +1,3 @@
 module.exports.userValidation = require('./user.validation');
-module.exports.trainValidation = require('./train.validation');
-module.exports.stationValidation = require('./station.validation');
+module.exports.productValidation = require('./product.validation');
 module.exports.authValidation = require('./auth.validation');

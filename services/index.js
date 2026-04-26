@@ -1,11 +1,11 @@
 module.exports.userService = require('./user.service');
-module.exports.trainService = require('./train.service');
-module.exports.stationService = require('./station.service');
+module.exports.productService = require('./product.service');
 module.exports.authService = require('./auth.service');
 module.exports.emailService = require('./email.service');
 module.exports.tokenService = require('./token.service');
 module.exports.passportService = require('./passport.service');
 module.exports.s3Service = require('./s3.service');
+module.exports.cloudinaryService = require('./cloudinary.service');
 module.exports.temps3CronService = require('./temps3Cron.service');
 module.exports.notificationService = require('./notification.service');
 module.exports.stripeService = require('./stripe.service');
