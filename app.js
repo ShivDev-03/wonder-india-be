@@ -34,7 +34,9 @@ if (config.env !== 'test') {
 }
 // CORS must run before body parsers so error responses (e.g. 413) still include Access-Control-* headers
 const corsOptions = {
-  origin: config.front.url ? [config.front.url, /^http:\/\/localhost(:\d+)?$/] : true,
+  origin: config.front.url
+    ? [config.front.url, 'https://slideshow-managed-true-monitoring.trycloudflare.com', /^http:\/\/localhost(:\d+)?$/]
+    : true,
   credentials: true,
 };
 app.use(cors(corsOptions));

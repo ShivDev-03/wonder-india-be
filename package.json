@@ -50,6 +50,7 @@
     "mime-types": "^2.1.32",
     "minio": "^7.0.18",
     "mocha": "^10.2.0",
+    "module-alias": "^2.3.4",
     "moment": "^2.29.1",
     "mongoose": "^5.7.7",
     "mongoose-aggregate-paginate-v2": "^1.0.42",
