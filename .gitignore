@@ -21,5 +21,4 @@ coverage
 .mochaTestCaseForApp.js
 .serverForTestingApi.js
 config/firebase.json
-docs/opencollection.yml
 docs/postman.json

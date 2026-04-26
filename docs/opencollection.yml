@@ -1,0 +1,11 @@
+# Minimal OpenAPI 3 spec for Swagger UI — extend with your real paths as needed
+openapi: 3.0.3
+info:
+  title: Wonder India API
+  description: API documentation. Regenerate or expand this file for full coverage.
+  version: 1.0.0
+servers:
+  - url: /v1
+    description: API v1
+paths: {}
+components: {}
